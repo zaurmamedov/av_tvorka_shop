@@ -1,0 +1,10 @@
+@import "../styles/variables.scss";
+
+.layout {
+  @include flex-col;
+  min-height: 100vh;
+}
+
+.layout__main {
+  flex: 1;
+}

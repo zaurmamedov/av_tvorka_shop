@@ -1,0 +1,168 @@
+@import "../styles/variables.scss";
+
+.checkout-page {
+  padding: $spacing-2xl 0;
+}
+
+.checkout-page__title {
+  font-size: $font-size-2xl;
+  margin-bottom: $spacing-2xl;
+}
+
+.checkout-page__layout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: $spacing-2xl;
+
+  @include media-mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkout-page__form {
+  background-color: $surface;
+  padding: $spacing-xl;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+
+  @include media-mobile {
+    padding: $spacing-lg;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: $spacing-2xl;
+
+    legend {
+      font-size: $font-size-lg;
+      font-weight: 600;
+      margin-bottom: $spacing-lg;
+      display: block;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .form-group {
+    margin-bottom: $spacing-lg;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+
+    .required {
+      color: $error;
+    }
+  }
+
+  .textarea {
+    min-height: 100px;
+  }
+
+  .checkbox-label {
+    @include flex-center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+    cursor: pointer;
+    font-size: $font-size-sm;
+
+    input {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+
+    span {
+      flex: 1;
+    }
+  }
+}
+
+.checkout-page__summary {
+  @include media-mobile {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+  }
+}
+
+.order-summary {
+  background-color: $surface;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-md;
+  @include flex-col;
+  gap: $spacing-md;
+
+  h3 {
+    margin: 0 0 $spacing-lg 0;
+    font-size: $font-size-lg;
+  }
+}
+
+.summary-items {
+  @include flex-col;
+  gap: $spacing-md;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-sm;
+
+  &.total {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  .item-name {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-md;
+  }
+
+  .item-qty {
+    color: $text-secondary;
+    font-weight: normal;
+  }
+
+  .item-price {
+    font-weight: 600;
+    min-width: 80px;
+    text-align: right;
+  }
+}
+
+.summary-divider {
+  height: 1px;
+  background-color: $border;
+  margin: $spacing-md 0;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: $spacing-3xl;
+
+  h1 {
+    margin-bottom: $spacing-lg;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $text-secondary;
+    margin-bottom: $spacing-xl;
+  }
+}

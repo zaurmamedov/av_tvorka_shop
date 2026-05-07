@@ -1,0 +1,26 @@
+@import "../styles/variables.scss";
+
+.category-page {
+  padding: $spacing-2xl 0;
+}
+
+.category-page__title {
+  font-size: $font-size-2xl;
+  margin-bottom: $spacing-2xl;
+
+  @include media-mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+.category-page__loading,
+.category-page__empty {
+  text-align: center;
+  padding: $spacing-3xl;
+  color: $text-secondary;
+  font-size: $font-size-lg;
+
+  .btn {
+    margin-top: $spacing-lg;
+  }
+}

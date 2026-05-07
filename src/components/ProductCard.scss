@@ -1,0 +1,113 @@
+@import "../styles/variables.scss";
+
+.product-card {
+  @include flex-col;
+  background-color: $surface;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  @include transition();
+  height: 100%;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+.product-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background-color: $background;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  @include transition();
+
+  .product-card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.product-card__discount-badge {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  background-color: $error;
+  color: white;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  font-weight: 700;
+}
+
+.product-card__content {
+  @include flex-col;
+  flex: 1;
+  padding: $spacing-lg;
+  gap: $spacing-md;
+}
+
+.product-card__name {
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $text-primary;
+  line-height: $line-height-tight;
+  margin: 0;
+  @include text-clamp(2);
+}
+
+.product-card__price {
+  @include flex-center;
+  gap: $spacing-md;
+  font-weight: 600;
+}
+
+.product-card__current-price {
+  font-size: $font-size-lg;
+  color: $primary;
+}
+
+.product-card__original-price {
+  font-size: $font-size-sm;
+  color: $text-light;
+  text-decoration: line-through;
+}
+
+.product-card__actions {
+  @include flex-col;
+  gap: $spacing-sm;
+  margin-top: auto;
+
+  .btn {
+    flex: 1;
+  }
+}
+
+.product-card__wishlist {
+  width: 36px;
+  height: 36px;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: $font-size-lg;
+  @include transition();
+  padding: 0;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+
+  &.active {
+    background-color: rgba($error, 0.1);
+    border-color: $error;
+    color: $error;
+  }
+}

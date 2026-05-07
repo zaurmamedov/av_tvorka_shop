@@ -1,0 +1,412 @@
+@import "./variables.scss";
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include media-mobile {
+    padding: 0 $spacing-md;
+  }
+}
+
+// Grid
+.grid {
+  display: grid;
+  gap: $spacing-lg;
+
+  &--2col {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include media-mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--3col {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include media-mobile {
+      grid-template-columns: 1fr;
+    }
+
+    @include media-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &--4col {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include media-mobile {
+      grid-template-columns: 1fr;
+    }
+
+    @include media-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+// Flex
+.flex {
+  display: flex;
+  gap: $spacing-md;
+
+  &--center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--between {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &--col {
+    flex-direction: column;
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+}
+
+// Typography
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: $line-height-tight;
+  font-weight: 600;
+}
+
+.h1 {
+  font-size: $font-size-3xl;
+
+  @include media-mobile {
+    font-size: $font-size-2xl;
+  }
+}
+
+.h2 {
+  font-size: $font-size-2xl;
+
+  @include media-mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+.h3 {
+  font-size: $font-size-xl;
+}
+
+.h4 {
+  font-size: $font-size-lg;
+}
+
+.text {
+  &--sm {
+    font-size: $font-size-sm;
+  }
+
+  &--lg {
+    font-size: $font-size-lg;
+  }
+
+  &--muted {
+    color: $text-secondary;
+  }
+
+  &--light {
+    color: $text-light;
+  }
+
+  &--primary {
+    color: $primary;
+  }
+
+  &--success {
+    color: $success;
+  }
+
+  &--error {
+    color: $error;
+  }
+
+  &--center {
+    text-align: center;
+  }
+}
+
+// Buttons
+.btn {
+  @include button-base();
+
+  &--primary {
+    background-color: $primary;
+    color: $text-primary;
+    box-shadow: $shadow-sm;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-dark;
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: $primary;
+    border: 1px solid $primary;
+
+    &:hover:not(:disabled) {
+      background-color: $primary;
+      color: $text-primary;
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: $text-primary;
+    border: 1px solid $border;
+
+    &:hover:not(:disabled) {
+      border-color: $primary;
+      color: $primary;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: $text-primary;
+
+    &:hover:not(:disabled) {
+      color: $primary;
+    }
+  }
+
+  &--sm {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    border-radius: $radius-md;
+  }
+
+  &--lg {
+    padding: $spacing-lg $spacing-2xl;
+    font-size: $font-size-lg;
+    border-radius: $radius-xl;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--loading {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+
+// Inputs
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: $spacing-md;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  background-color: $surface;
+  color: $text-primary;
+  @include transition();
+
+  &:hover {
+    border-color: darken($border, 10%);
+  }
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+  }
+
+  &:disabled {
+    background-color: darken($background, 2%);
+    color: $text-light;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: $text-light;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+// Forms
+.form-group {
+  margin-bottom: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-label {
+  display: block;
+  margin-bottom: $spacing-sm;
+  font-weight: 500;
+  color: $text-primary;
+
+  .required {
+    color: $error;
+  }
+}
+
+.form-error {
+  margin-top: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $error;
+}
+
+.form-hint {
+  margin-top: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $text-light;
+}
+
+// Cards
+.card {
+  background-color: $surface;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  @include transition();
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+
+  &--elevated {
+    box-shadow: $shadow-lg;
+
+    &:hover {
+      box-shadow: $shadow-xl;
+    }
+  }
+}
+
+// Badge
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &--primary {
+    background-color: $primary;
+    color: $text-primary;
+  }
+
+  &--success {
+    background-color: $success;
+    color: white;
+  }
+
+  &--error {
+    background-color: $error;
+    color: white;
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid $border;
+    color: $text-secondary;
+  }
+}
+
+// Spacing
+.mt {
+  @for $i from 0 through 5 {
+    &-#{$i} {
+      margin-top: $spacing-md * $i;
+    }
+  }
+}
+
+.mb {
+  @for $i from 0 through 5 {
+    &-#{$i} {
+      margin-bottom: $spacing-md * $i;
+    }
+  }
+}
+
+.px {
+  @for $i from 0 through 5 {
+    &-#{$i} {
+      padding-left: $spacing-md * $i;
+      padding-right: $spacing-md * $i;
+    }
+  }
+}
+
+.py {
+  @for $i from 0 through 5 {
+    &-#{$i} {
+      padding-top: $spacing-md * $i;
+      padding-bottom: $spacing-md * $i;
+    }
+  }
+}
+
+// Utilities
+.hidden {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.opacity {
+  &-50 {
+    opacity: 0.5;
+  }
+
+  &-75 {
+    opacity: 0.75;
+  }
+}
+
+.cursor {
+  &-pointer {
+    cursor: pointer;
+  }
+
+  &-not-allowed {
+    cursor: not-allowed;
+  }
+}

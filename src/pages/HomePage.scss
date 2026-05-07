@@ -1,0 +1,114 @@
+@import "../styles/variables.scss";
+
+.hero {
+  background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+  color: $text-primary;
+  padding: $spacing-3xl $spacing-lg;
+  text-align: center;
+
+  @include media-mobile {
+    padding: $spacing-2xl $spacing-md;
+  }
+}
+
+.hero__content {
+  @include flex-col;
+  align-items: center;
+  gap: $spacing-xl;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero__title {
+  font-size: $font-size-3xl;
+  font-weight: 700;
+  margin: 0;
+
+  @include media-mobile {
+    font-size: $font-size-2xl;
+  }
+}
+
+.hero__subtitle {
+  font-size: $font-size-lg;
+  margin: 0;
+  opacity: 0.95;
+
+  @include media-mobile {
+    font-size: $font-size-base;
+  }
+}
+
+.featured {
+  padding: $spacing-3xl 0;
+
+  @include media-mobile {
+    padding: $spacing-2xl 0;
+  }
+}
+
+.featured__header {
+  @include flex-between;
+  margin-bottom: $spacing-2xl;
+
+  h2 {
+    font-size: $font-size-2xl;
+    margin: 0;
+
+    @include media-mobile {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+.featured__view-all {
+  font-weight: 600;
+  color: $primary;
+  @include transition();
+
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+.featured__loading,
+.featured__empty {
+  text-align: center;
+  padding: $spacing-2xl;
+  color: $text-secondary;
+  font-size: $font-size-lg;
+}
+
+.benefits {
+  background-color: $background;
+  padding: $spacing-3xl 0;
+
+  @include media-mobile {
+    padding: $spacing-2xl 0;
+  }
+}
+
+.benefit-card {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-lg;
+  padding: $spacing-xl;
+  background-color: $surface;
+  border-radius: $radius-lg;
+}
+
+.benefit-card__icon {
+  font-size: $font-size-3xl;
+}
+
+.benefit-card h3 {
+  font-size: $font-size-lg;
+  margin: 0;
+}
+
+.benefit-card p {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  margin: 0;
+}

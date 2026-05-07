@@ -1,0 +1,87 @@
+@import "../styles/variables.scss";
+
+.order-success-page {
+  padding: $spacing-3xl 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.success-content {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-xl;
+  max-width: 500px;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  @include flex-center;
+  background-color: $success;
+  color: white;
+  border-radius: $radius-full;
+  font-size: 3rem;
+  animation: slideInUp 0.6s ease;
+}
+
+h1 {
+  font-size: $font-size-2xl;
+  margin: 0;
+}
+
+p {
+  font-size: $font-size-base;
+  color: $text-secondary;
+  margin: 0;
+}
+
+.order-details {
+  background-color: $background;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  width: 100%;
+  @include flex-col;
+  gap: $spacing-md;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-sm;
+
+  .label {
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  .value {
+    font-weight: 600;
+    color: $primary;
+  }
+}
+
+.info-text {
+  font-size: $font-size-sm;
+  color: $text-light;
+}
+
+.button-group {
+  display: flex;
+  gap: $spacing-md;
+  width: 100%;
+
+  @include media-mobile {
+    flex-direction: column;
+  }
+
+  .btn {
+    flex: 1;
+  }
+}

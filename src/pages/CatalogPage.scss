@@ -1,0 +1,126 @@
+@import "../styles/variables.scss";
+
+.catalog-page {
+  padding: $spacing-2xl 0;
+}
+
+.catalog-page__title {
+  font-size: $font-size-2xl;
+  margin-bottom: $spacing-2xl;
+
+  @include media-mobile {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.catalog-page__layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: $spacing-2xl;
+
+  @include media-mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.catalog-page__filters {
+  @include flex-col;
+  gap: $spacing-lg;
+  background-color: $surface;
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  height: fit-content;
+  box-shadow: $shadow-sm;
+
+  @include media-mobile {
+    box-shadow: none;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: $font-size-lg;
+
+    @include media-mobile {
+      display: none;
+    }
+  }
+}
+
+.filter-group {
+  @include flex-col;
+  gap: $spacing-sm;
+}
+
+.filter-label {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.price-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+}
+
+.checkbox-label {
+  @include flex-center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  font-size: $font-size-sm;
+
+  input {
+    cursor: pointer;
+  }
+
+  span {
+    flex: 1;
+  }
+}
+
+.catalog-page__content {
+  @include flex-col;
+  gap: $spacing-lg;
+}
+
+.catalog-page__sort {
+  @include flex-between;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid $border;
+
+  @include media-mobile {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  label {
+    font-weight: 600;
+    min-width: 80px;
+  }
+
+  select {
+    max-width: 200px;
+
+    @include media-mobile {
+      max-width: 100%;
+    }
+  }
+}
+
+.catalog-page__results-info {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  padding: $spacing-md 0;
+}
+
+.catalog-page__loading,
+.catalog-page__empty {
+  text-align: center;
+  padding: $spacing-3xl;
+  color: $text-secondary;
+  font-size: $font-size-lg;
+}

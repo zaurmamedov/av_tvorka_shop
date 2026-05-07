@@ -1,0 +1,33 @@
+@import "../styles/variables.scss";
+
+.wishlist-page {
+  padding: $spacing-2xl 0;
+}
+
+.wishlist-page__title {
+  font-size: $font-size-2xl;
+  margin-bottom: $spacing-2xl;
+}
+
+.wishlist-page__loading,
+.wishlist-page__empty {
+  text-align: center;
+  padding: $spacing-3xl;
+  color: $text-secondary;
+  font-size: $font-size-lg;
+}
+
+.empty-wishlist {
+  text-align: center;
+  padding: $spacing-3xl;
+
+  h1 {
+    margin-bottom: $spacing-lg;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $text-secondary;
+    margin-bottom: $spacing-xl;
+  }
+}

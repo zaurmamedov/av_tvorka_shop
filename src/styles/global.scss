@@ -1,0 +1,77 @@
+@import "./variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $text-primary;
+  background-color: $background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  @include transition();
+
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+button {
+  font-family: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $text-light;
+  border-radius: $radius-full;
+
+  &:hover {
+    background: $text-secondary;
+  }
+}
+
+// Selection
+::selection {
+  background-color: $primary;
+  color: $surface;
+}
+
+::-moz-selection {
+  background-color: $primary;
+  color: $surface;
+}

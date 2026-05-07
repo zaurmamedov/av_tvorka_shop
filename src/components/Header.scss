@@ -1,0 +1,199 @@
+@import "../styles/variables.scss";
+
+.header {
+  background-color: $surface;
+  border-bottom: 1px solid $border;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: $shadow-sm;
+}
+
+.header__top {
+  padding: $spacing-lg 0;
+
+  @include media-mobile {
+    padding: $spacing-md 0;
+  }
+}
+
+.header__top-content {
+  @include flex-between;
+  gap: $spacing-xl;
+
+  @include media-mobile {
+    gap: $spacing-md;
+  }
+}
+
+.header__logo {
+  flex-shrink: 0;
+
+  h1 {
+    font-size: $font-size-2xl;
+    color: $primary;
+    margin: 0;
+    font-weight: 700;
+
+    @include media-mobile {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+.header__nav {
+  @include flex-center;
+  gap: $spacing-xl;
+  flex: 1;
+
+  @include media-mobile {
+    display: none;
+  }
+
+  a {
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $text-primary;
+    @include transition();
+    position: relative;
+
+    &:hover {
+      color: $primary;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $primary;
+      transform: scaleX(0);
+      @include transition();
+    }
+  }
+}
+
+.header__actions {
+  @include flex-center;
+  gap: $spacing-md;
+
+  @include media-mobile {
+    gap: $spacing-sm;
+  }
+}
+
+.header__selector {
+  @include flex-col;
+  gap: $spacing-xs;
+
+  @include media-mobile {
+    display: none;
+  }
+
+  label {
+    font-size: $font-size-xs;
+    font-weight: 600;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  select {
+    padding: $spacing-xs $spacing-sm;
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    background-color: $surface;
+    cursor: pointer;
+    font-size: $font-size-sm;
+    @include transition();
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 2px rgba($primary, 0.1);
+    }
+  }
+}
+
+.header__icon {
+  @include flex-center;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+  background-color: $background;
+  @include transition();
+
+  &:hover {
+    background-color: darken($background, 5%);
+  }
+
+  font-size: $font-size-xl;
+}
+
+.header__badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background-color: $error;
+  color: white;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: 700;
+}
+
+.header__menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: $font-size-xl;
+  cursor: pointer;
+  padding: $spacing-sm;
+  color: $text-primary;
+
+  @include media-mobile {
+    display: block;
+  }
+}
+
+.header__mobile-menu {
+  display: none;
+  padding: $spacing-lg;
+  border-top: 1px solid $border;
+  background-color: $background;
+
+  @include media-mobile {
+    display: block;
+  }
+}
+
+.header__mobile-nav {
+  @include flex-col;
+  gap: $spacing-md;
+
+  a {
+    display: block;
+    color: $text-primary;
+    font-weight: 500;
+    @include transition();
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
