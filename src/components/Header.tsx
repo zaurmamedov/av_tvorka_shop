@@ -3,8 +3,9 @@ import { useLanguage } from "../hooks/useLanguage";
 import { useCurrency } from "../hooks/useCurrency";
 import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist";
-import { Language, Currency } from "../types";
+import type { Language, Currency } from "../types";
 import "./Header.scss";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -23,11 +24,11 @@ export const Header = () => {
             </div>
 
             <nav className="header__nav">
-              <a href="/">{t("nav.home")}</a>
-              <a href="/catalog">{t("nav.catalog")}</a>
-              <a href="/jewelry">{t("nav.jewelry")}</a>
-              <a href="/bags">{t("nav.bags")}</a>
-              <a href="/accessories">{t("nav.accessories")}</a>
+              <Link to="/">{t("nav.home")}</Link>
+              <Link to="/catalog">{t("nav.catalog")}</Link>
+              <Link to="/jewelry">{t("nav.jewelry")}</Link>
+              <Link to="/bags">{t("nav.bags")}</Link>
+              <Link to="/accessories">{t("nav.accessories")}</Link    >
             </nav>
 
             <div className="header__actions">
@@ -58,19 +59,19 @@ export const Header = () => {
                 </select>
               </div>
 
-              <a href="/wishlist" className="header__icon">
+              <Link to="/wishlist" className="header__icon">
                 <span className="icon-heart">♡</span>
                 {wishlist.length > 0 && (
                   <span className="header__badge">{wishlist.length}</span>
                 )}
-              </a>
+              </Link>
 
-              <a href="/cart" className="header__icon">
+              <Link to="/cart" className="header__icon">
                 <span className="icon-cart">🛒</span>
                 {cart.totalQuantity > 0 && (
                   <span className="header__badge">{cart.totalQuantity}</span>
                 )}
-              </a>
+              </Link>
             </div>
 
             <button
@@ -86,11 +87,11 @@ export const Header = () => {
       {mobileMenuOpen && (
         <div className="header__mobile-menu">
           <nav className="header__mobile-nav">
-            <a href="/">{t("nav.home")}</a>
-            <a href="/catalog">{t("nav.catalog")}</a>
-            <a href="/jewelry">{t("nav.jewelry")}</a>
-            <a href="/bags">{t("nav.bags")}</a>
-            <a href="/accessories">{t("nav.accessories")}</a>
+            <Link to="/">{t("nav.home")}</Link>
+            <Link to="/catalog">{t("nav.catalog")}</Link>
+            <Link to="/jewelry">{t("nav.jewelry")}</Link>
+            <Link to="/bags">{t("nav.bags")}</Link>
+            <Link to="/accessories">{t("nav.accessories")}</Link>
           </nav>
         </div>
       )}

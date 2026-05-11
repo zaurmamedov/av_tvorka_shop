@@ -4,7 +4,7 @@ import { useLanguage } from "../hooks/useLanguage";
 import { useCurrency } from "../hooks/useCurrency";
 import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist";
-import { Product } from "../types";
+import type { Product } from "../types";
 import { productsService } from "../services/products.service";
 import { currencyUtils, priceUtils } from "../lib/utils";
 import { ProductCard } from "../components/ProductCard";

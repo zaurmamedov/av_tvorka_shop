@@ -2,11 +2,11 @@ import {
   createContext,
   useContext,
   useState,
-  ReactNode,
+  type ReactNode,
   useCallback,
   useEffect,
 } from "react";
-import { Wishlist, WishlistContextType } from "../types";
+import type { Wishlist, WishlistContextType } from "../types";
 
 const WishlistContext = createContext<WishlistContextType | undefined>(
   undefined,

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import { useCurrency } from "../hooks/useCurrency";
 import { useCart } from "../hooks/useCart";
-import { DeliveryMethod, PaymentMethod, OrderCustomer, Order } from "../types";
+import { DeliveryMethod, PaymentMethod, type OrderCustomer, type Order } from "../types";
 import { currencyUtils, deliveryUtils } from "../lib/utils";
 import "./CheckoutPage.scss";
 

@@ -2,11 +2,11 @@ import {
   createContext,
   useContext,
   useState,
-  ReactNode,
+  type ReactNode,
   useEffect,
   useCallback,
 } from "react";
-import { Currency, CurrencyContextType } from "../types";
+import type { Currency, CurrencyContextType } from "../types";
 import { currencyUtils } from "../lib/utils";
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(

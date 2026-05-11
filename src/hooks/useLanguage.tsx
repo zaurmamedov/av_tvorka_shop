@@ -2,10 +2,10 @@ import {
   createContext,
   useContext,
   useState,
-  ReactNode,
+  type ReactNode,
   useCallback,
 } from "react";
-import { Language, LanguageContextType } from "../types";
+import type { Language, LanguageContextType } from "../types";
 import { translations } from "../lib/translations";
 
 const LanguageContext = createContext<LanguageContextType | undefined>(

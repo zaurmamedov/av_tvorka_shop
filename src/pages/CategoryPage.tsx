@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
-import { Product } from "../types";
+import type { Product } from "../types";
 import { productsService } from "../services/products.service";
 import { ProductCard } from "../components/ProductCard";
 import "./CategoryPage.scss";

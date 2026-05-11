@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import { useWishlist } from "../hooks/useWishlist";
-import { Product } from "../types";
+import type { Product } from "../types";
 import { productsService } from "../services/products.service";
 import { ProductCard } from "../components/ProductCard";
 import "./WishlistPage.scss";

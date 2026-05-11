@@ -1,4 +1,4 @@
-import { Product } from "../types";
+import type { Product } from "../types";
 import { useLanguage } from "../hooks/useLanguage";
 import { useCurrency } from "../hooks/useCurrency";
 import { useCart } from "../hooks/useCart";
@@ -27,6 +27,9 @@ export const ProductCard = ({ product, onViewDetails }: ProductCardProps) => {
   const convertedOriginalPrice = currencyUtils.convert(originalPrice, currency);
 
   const inWishlist = isInWishlist(product.id);
+
+    console.log(product);
+    console.log(product.img);
 
   return (
     <div className="product-card">

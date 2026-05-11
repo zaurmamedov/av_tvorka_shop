@@ -1,5 +1,5 @@
 import { supabase } from "../lib/supabase";
-import { Product } from "../types";
+import type { Product } from "../types";
 
 export const productsService = {
   async getAllProducts(): Promise<Product[]> {
