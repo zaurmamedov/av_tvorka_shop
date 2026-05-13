@@ -11,11 +11,16 @@
 
 .cart-page__layout {
   display: grid;
-  grid-template-columns: 1fr 350px;
+  grid-template-columns: 1fr minmax(280px, 350px);
   gap: $spacing-2xl;
 
   @include media-mobile {
     grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+
+  @include media-tablet {
+    gap: $spacing-lg;
   }
 }
 
@@ -23,26 +28,32 @@
   background-color: $surface;
   border-radius: $radius-lg;
   box-shadow: $shadow-sm;
-  overflow: auto;
 }
 
 .cart-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .cart-table__header {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 80px;
-  gap: $spacing-lg;
-  padding: $spacing-lg;
+  grid-template-columns: 2fr 1fr 1fr 1fr 60px;
+  gap: $spacing-md;
+  padding: $spacing-lg $spacing-md;
   border-bottom: 1px solid $border;
   background-color: $background;
   font-weight: 600;
-  font-size: $font-size-sm;
+  font-size: $font-size-xs;
 
   @include media-mobile {
     display: none;
+  }
+
+  @include media-tablet {
+    gap: $spacing-sm;
+    padding: $spacing-md;
+    font-size: $font-size-xs;
   }
 
   .col-product {
@@ -64,11 +75,16 @@
 
 .cart-table__row {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 80px;
-  gap: $spacing-lg;
-  padding: $spacing-lg;
+  grid-template-columns: 2fr 1fr 1fr 1fr 60px;
+  gap: $spacing-md;
+  padding: $spacing-lg $spacing-md;
   border-bottom: 1px solid $border;
   align-items: center;
+
+  @include media-tablet {
+    gap: $spacing-sm;
+    padding: $spacing-md;
+  }
 
   @include media-mobile {
     grid-template-columns: 1fr;
@@ -116,11 +132,19 @@
   @include flex-center;
   gap: $spacing-md;
   text-align: left;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  @include media-mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   h4 {
     font-size: $font-size-base;
     margin: 0;
     color: $text-primary;
+    word-break: break-word;
   }
 
   p {
@@ -136,8 +160,14 @@
   object-fit: cover;
   border-radius: $radius-md;
   background-color: $background;
+  flex-shrink: 0;
 
   @include media-mobile {
+    width: 50px;
+    height: 50px;
+  }
+
+  @include media-tablet {
     width: 60px;
     height: 60px;
   }
@@ -155,11 +185,19 @@
 }
 
 .col-quantity input {
-  width: 60px;
+  width: 100%;
+  max-width: 60px;
   padding: $spacing-sm;
   text-align: center;
   border: 1px solid $border;
   border-radius: $radius-md;
+  font-size: $font-size-base;
+
+  @include media-mobile {
+    max-width: 50px;
+    padding: $spacing-xs;
+    font-size: $font-size-sm;
+  }
 }
 
 .btn-remove {
@@ -191,10 +229,13 @@
 }
 
 .cart-page__summary {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+
   @include media-mobile {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
+    position: static;
+    top: auto;
   }
 }
 

@@ -39,6 +39,30 @@ export const HomePage = () => {
         </div>
       </section>
 
+      {/* Brand About Section */}
+      <section className="brand-about">
+        <div className="container">
+          <div className="brand-about__content">
+            <div className="brand-about__text">
+              <h2>{language === "uk" ? "AV.TVORKA" : "AV.TVORKA"}</h2>
+              <p>
+                {language === "uk"
+                  ? "Ми створюємо вишукані ювелірні вироби та аксесуари вручну. Кожна наша прикраса – це твір мистецтва, виконаний з любов'ю до деталей."
+                  : "We create exquisite handmade jewelry and accessories. Each piece is a work of art, crafted with attention to detail and passion."}
+              </p>
+              <p className="brand-about__subtitle">
+                {language === "uk"
+                  ? "Традиція, якість, індивідуальність"
+                  : "Tradition, quality, individuality"}
+              </p>
+            </div>
+            <div className="brand-about__visual">
+              <div className="brand-about__accent">✨</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products Section */}
       <section className="featured">
         <div className="container">

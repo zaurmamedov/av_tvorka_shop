@@ -6,9 +6,14 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 $spacing-lg;
+  box-sizing: border-box;
 
   @include media-mobile {
     padding: 0 $spacing-md;
+  }
+
+  @include media-tablet {
+    padding: 0 $spacing-lg;
   }
 }
 
@@ -16,40 +21,32 @@
 .grid {
   display: grid;
   gap: $spacing-lg;
+  width: 100%;
 
   &--2col {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: $spacing-md;
 
     @include media-mobile {
-      grid-template-columns: 1fr;
+      gap: $spacing-md;
     }
   }
 
   &--3col {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: $spacing-md;
 
     @include media-mobile {
-      grid-template-columns: 1fr;
-    }
-
-    @include media-tablet {
-      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-md;
     }
   }
 
   &--4col {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: $spacing-md;
 
     @include media-mobile {
-      grid-template-columns: 1fr;
-    }
-
-    @include media-tablet {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include media-desktop {
-      grid-template-columns: repeat(4, 1fr);
+      gap: $spacing-md;
     }
   }
 }
@@ -58,6 +55,7 @@
 .flex {
   display: flex;
   gap: $spacing-md;
+  flex-wrap: wrap;
 
   &--center {
     align-items: center;
@@ -71,6 +69,7 @@
 
   &--col {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
 
   &--wrap {
@@ -197,16 +196,30 @@
     padding: $spacing-sm $spacing-md;
     font-size: $font-size-sm;
     border-radius: $radius-md;
+
+    @include media-mobile {
+      padding: $spacing-xs $spacing-sm;
+      font-size: $font-size-xs;
+    }
   }
 
   &--lg {
     padding: $spacing-lg $spacing-2xl;
     font-size: $font-size-lg;
     border-radius: $radius-xl;
+
+    @include media-mobile {
+      padding: $spacing-md $spacing-lg;
+      font-size: $font-size-base;
+    }
   }
 
   &--block {
     width: 100%;
+  }
+
+  &--flex {
+    flex: 1;
   }
 
   &--loading {
@@ -225,7 +238,14 @@
   border-radius: $radius-md;
   background-color: $surface;
   color: $text-primary;
+  font-size: $font-size-base;
+  box-sizing: border-box;
   @include transition();
+
+  @include media-mobile {
+    padding: $spacing-sm;
+    font-size: $font-size-sm;
+  }
 
   &:hover {
     border-color: darken($border, 10%);

@@ -9,17 +9,12 @@
 
 .footer__content {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: $spacing-2xl;
   margin-bottom: $spacing-2xl;
 
   @include media-mobile {
-    grid-template-columns: 1fr;
     gap: $spacing-xl;
-  }
-
-  @include media-tablet {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 

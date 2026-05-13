@@ -35,7 +35,7 @@ export const productsService = {
     const { data, error } = await supabase
       .from("products")
       .select("*")
-      .or(`category_ukr.eq.${category}, category_en.eq.${category}`)
+      .or(`category_ukr.eq."${category}",category_en.eq."${category}"`)
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -50,7 +50,8 @@ export const productsService = {
     const { data, error } = await supabase
       .from("products")
       .select("*")
-      .or(`material_ukr.eq.${material}, material_en.eq.${material}`);
+      .or(`material_ukr.eq."${material}",material_en.eq."${material}"`)
+      .order("created_at", { ascending: false });
 
     if (error) {
       console.error("Error fetching material products:", error);

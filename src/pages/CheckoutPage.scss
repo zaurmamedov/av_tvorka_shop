@@ -11,11 +11,16 @@
 
 .checkout-page__layout {
   display: grid;
-  grid-template-columns: 1fr 350px;
+  grid-template-columns: 1fr minmax(280px, 350px);
   gap: $spacing-2xl;
 
   @include media-mobile {
     grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+
+  @include media-tablet {
+    gap: $spacing-lg;
   }
 }
 

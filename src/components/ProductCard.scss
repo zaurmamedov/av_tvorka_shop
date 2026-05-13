@@ -66,6 +66,12 @@
   @include flex-center;
   gap: $spacing-md;
   font-weight: 600;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @include media-mobile {
+    gap: $spacing-sm;
+  }
 }
 
 .product-card__current-price {
@@ -80,12 +86,23 @@
 }
 
 .product-card__actions {
-  @include flex-col;
-  gap: $spacing-sm;
+  display: flex;
+  gap: $spacing-xs;
   margin-top: auto;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 
   .btn {
     flex: 1;
+    min-width: 0;
+    font-size: $font-size-xs;
+    padding: $spacing-sm $spacing-md;
+
+    @include media-mobile {
+      font-size: $font-size-xs;
+      padding: $spacing-xs $spacing-sm;
+    }
   }
 }
 
@@ -109,5 +126,26 @@
     background-color: rgba($error, 0.1);
     border-color: $error;
     color: $error;
+  }
+}
+
+.product-card__cart-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: $font-size-lg;
+  @include transition();
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: $primary;
+    background-color: rgba($primary, 0.05);
   }
 }

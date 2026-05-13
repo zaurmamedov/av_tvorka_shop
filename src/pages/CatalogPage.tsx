@@ -15,20 +15,14 @@ export const CatalogPage = () => {
 
   // Filter states
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [selectedMaterial, setSelectedMaterial] = useState<string>("");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [onlyDiscounted, setOnlyDiscounted] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>(SortOption.NEWEST);
 
-  // Extract unique categories and materials
+  // Extract unique categories
   const categories = [
     ...new Set(
       products.map((p) => (language === "uk" ? p.category_ukr : p.category_en)),
-    ),
-  ];
-  const materials = [
-    ...new Set(
-      products.map((p) => (language === "uk" ? p.material_ukr : p.material_en)),
     ),
   ];
 
@@ -51,14 +45,6 @@ export const CatalogPage = () => {
       result = result.filter((p) => {
         const cat = language === "uk" ? p.category_ukr : p.category_en;
         return cat === selectedCategory;
-      });
-    }
-
-    // Material filter
-    if (selectedMaterial) {
-      result = result.filter((p) => {
-        const mat = language === "uk" ? p.material_ukr : p.material_en;
-        return mat === selectedMaterial;
       });
     }
 
@@ -95,7 +81,6 @@ export const CatalogPage = () => {
   }, [
     products,
     selectedCategory,
-    selectedMaterial,
     priceRange,
     onlyDiscounted,
     sortBy,
@@ -124,23 +109,6 @@ export const CatalogPage = () => {
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>
                     {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Material Filter */}
-            <div className="filter-group">
-              <label className="filter-label">{t("catalog.material")}</label>
-              <select
-                value={selectedMaterial}
-                onChange={(e) => setSelectedMaterial(e.target.value)}
-                className="input"
-              >
-                <option value="">{language === "uk" ? "Всі" : "All"}</option>
-                {materials.map((mat) => (
-                  <option key={mat} value={mat}>
-                    {mat}
                   </option>
                 ))}
               </select>
@@ -188,7 +156,6 @@ export const CatalogPage = () => {
               className="btn btn--outline btn--block"
               onClick={() => {
                 setSelectedCategory("");
-                setSelectedMaterial("");
                 setPriceRange([0, 10000]);
                 setOnlyDiscounted(false);
               }}

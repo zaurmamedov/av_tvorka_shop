@@ -6,12 +6,14 @@ import { WishlistProvider } from "./hooks/useWishlist";
 import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage";
 import { CatalogPage } from "./pages/CatalogPage";
-import { CategoryPage } from "./pages/CategoryPage";
 import { ProductDetailPage } from "./pages/ProductDetailPage";
 import { CartPage } from "./pages/CartPage";
 import { WishlistPage } from "./pages/WishlistPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { OrderSuccessPage } from "./pages/OrderSuccessPage";
+import { JewelleryPage } from "./pages/JewelleryPage";
+import { BagsPage } from "./pages/BagsPage";
+import { AccessoriesPage } from "./pages/AccessoriesPage";
 import "./styles/global.scss";
 import "./styles/components.scss";
 
@@ -26,9 +28,9 @@ function App() {
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/catalog" element={<CatalogPage />} />
-                  <Route path="/jewelry" element={<CategoryPage />} />
-                  <Route path="/bags" element={<CategoryPage />} />
-                  <Route path="/accessories" element={<CategoryPage />} />
+                  <Route path="/jewelry" element={<JewelleryPage />} />
+                  <Route path="/bags" element={<BagsPage />} />
+                  <Route path="/accessories" element={<AccessoriesPage />} />
                   <Route path="/product/:id" element={<ProductDetailPage />} />
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/wishlist" element={<WishlistPage />} />

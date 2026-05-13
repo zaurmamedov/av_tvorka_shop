@@ -28,9 +28,6 @@ export const ProductCard = ({ product, onViewDetails }: ProductCardProps) => {
 
   const inWishlist = isInWishlist(product.id);
 
-    console.log(product);
-    console.log(product.img);
-
   return (
     <div className="product-card">
       <div className="product-card__image-wrapper">
@@ -64,10 +61,11 @@ export const ProductCard = ({ product, onViewDetails }: ProductCardProps) => {
 
         <div className="product-card__actions">
           <button
-            className="btn btn--primary btn--sm"
+            className="product-card__cart-btn"
             onClick={() => addToCart(product, 1)}
+            title={t("product.addToCart")}
           >
-            {t("product.addToCart")}
+            🛒
           </button>
           <button
             className={`product-card__wishlist ${inWishlist ? "active" : ""}`}
@@ -88,7 +86,7 @@ export const ProductCard = ({ product, onViewDetails }: ProductCardProps) => {
           </button>
           {onViewDetails && (
             <button
-              className="btn btn--outline btn--sm"
+              className="btn btn--outline btn--sm btn--flex"
               onClick={() => onViewDetails(product.id)}
             >
               {t("common.viewDetails")}
