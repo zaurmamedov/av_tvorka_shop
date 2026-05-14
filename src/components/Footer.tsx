@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import "./Footer.scss";
 
@@ -22,21 +23,11 @@ export const Footer = () => {
           <div className="footer__section">
             <h4>{language === "uk" ? "Навігація" : "Navigation"}</h4>
             <ul>
-              <li>
-                <a href="/">{t("nav.home")}</a>
-              </li>
-              <li>
-                <a href="/catalog">{t("nav.catalog")}</a>
-              </li>
-              <li>
-                <a href="/jewelry">{t("nav.jewelry")}</a>
-              </li>
-              <li>
-                <a href="/bags">{t("nav.bags")}</a>
-              </li>
-              <li>
-                <a href="/accessories">{t("nav.accessories")}</a>
-              </li>
+              <Link to="/">{t("nav.home")}</Link>
+              <Link to="/catalog">{t("nav.catalog")}</Link>
+              <Link to="/jewellery">{t("nav.jewellery")}</Link>
+              <Link to="/bags">{t("nav.bags")}</Link>
+              <Link to="/accessories">{t("nav.accessories")}</Link    >
             </ul>
           </div>
 

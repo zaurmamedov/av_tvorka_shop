@@ -151,7 +151,7 @@ WishlistProvider
 | ------------------------- | ----------------- | ----------------------------------- |
 | `/`                       | HomePage          | Hero + featured products            |
 | `/catalog`                | CatalogPage       | Full catalog with filters & sorting |
-| `/jewelry`                | CategoryPage      | Jewelry category                    |
+| `/jewellery`                | CategoryPage      | Jewellery category                    |
 | `/bags`                   | CategoryPage      | Bags category                       |
 | `/accessories`            | CategoryPage      | Accessories category                |
 | `/product/:id`            | ProductDetailPage | Detailed view + related products    |

@@ -89,7 +89,7 @@
 
 #### 3. **Category Pages** (3 Categories)
 
-- [x] Jewelry category
+- [x] Jewellery category
 - [x] Bags category
 - [x] Accessories category
 - [x] Category-specific product filtering
@@ -374,7 +374,7 @@
 
 - [x] Home page route (/)
 - [x] Catalog route (/catalog)
-- [x] Category routes (/jewelry, /bags, /accessories)
+- [x] Category routes (/jewellery, /bags, /accessories)
 - [x] Product detail route (/product/:id)
 - [x] Cart route (/cart)
 - [x] Wishlist route (/wishlist)

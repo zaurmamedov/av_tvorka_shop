@@ -5,7 +5,7 @@ import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist";
 import type { Language, Currency } from "../types";
 import "./Header.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Header = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -19,14 +19,14 @@ export const Header = () => {
       <div className="header__top">
         <div className="container">
           <div className="header__top-content">
-            <div className="header__logo">
+            <NavLink to="/" end className="header__logo">
               <h1>{t("nav.logo")}</h1>
-            </div>
+            </NavLink>
 
             <nav className="header__nav">
               <Link to="/">{t("nav.home")}</Link>
               <Link to="/catalog">{t("nav.catalog")}</Link>
-              <Link to="/jewelry">{t("nav.jewelry")}</Link>
+              <Link to="/jewellery">{t("nav.jewellery")}</Link>
               <Link to="/bags">{t("nav.bags")}</Link>
               <Link to="/accessories">{t("nav.accessories")}</Link    >
             </nav>
@@ -66,12 +66,12 @@ export const Header = () => {
                 )}
               </Link>
 
-              <Link to="/cart" className="header__icon">
+              <NavLink to="/cart" end className="header__icon">
                 <span className="icon-cart">🛒</span>
                 {cart.totalQuantity > 0 && (
                   <span className="header__badge">{cart.totalQuantity}</span>
                 )}
-              </Link>
+              </NavLink>
             </div>
 
             <button
@@ -89,7 +89,7 @@ export const Header = () => {
           <nav className="header__mobile-nav">
             <Link to="/">{t("nav.home")}</Link>
             <Link to="/catalog">{t("nav.catalog")}</Link>
-            <Link to="/jewelry">{t("nav.jewelry")}</Link>
+            <Link to="/jewellery">{t("nav.jewellery")}</Link>
             <Link to="/bags">{t("nav.bags")}</Link>
             <Link to="/accessories">{t("nav.accessories")}</Link>
           </nav>

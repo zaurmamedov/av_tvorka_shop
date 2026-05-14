@@ -2,13 +2,17 @@ import { useLanguage } from "../hooks/useLanguage";
 import { CategoryPageTemplate } from "../components/CategoryPageTemplate";
 
 export const JewelleryPage = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <CategoryPageTemplate
       category="jewellery"
       title={t("nav.jewellery")}
-      description="Авторські прикраси ручної роботи для особливих образів."
+      description={
+        language === "uk"
+          ? "Авторські прикраси ручної роботи для особливих образів."
+          : "Handmade jewellery for special looks."
+      }
     />
   );
 };

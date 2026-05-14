@@ -242,7 +242,7 @@ npm run deploy
 | ------------------------- | ----------------- | ---------------------------------------- |
 | `/`                       | HomePage          | Hero section + featured products         |
 | `/catalog`                | CatalogPage       | All products with filters & sorting      |
-| `/jewelry`                | CategoryPage      | Jewelry category                         |
+| `/jewellery`                | CategoryPage      | Jewellery category                         |
 | `/bags`                   | CategoryPage      | Bags category                            |
 | `/accessories`            | CategoryPage      | Accessories category                     |
 | `/product/:id`            | ProductDetailPage | Detailed product view + related products |

@@ -23,6 +23,7 @@
   font-size: $font-size-3xl;
   font-weight: 700;
   margin: 0;
+  color: $surface;
 
   @include media-mobile {
     font-size: $font-size-2xl;
