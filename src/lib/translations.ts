@@ -4,6 +4,7 @@ export const translations = {
     "nav.logo": "AV.TVORKA",
     "nav.home": "Головна",
     "nav.catalog": "Каталог",
+    "nav.care": "Догляд",
     "nav.jewellery": "Прикраси",
     "nav.bags": "Сумки",
     "nav.accessories": "Аксесуари",
@@ -11,6 +12,7 @@ export const translations = {
     "nav.wishlist": "Вподобання",
     "nav.language": "Мова",
     "nav.currency": "Валюта",
+    "nav.delivery": "Доставка",
 
     // Header
     "header.search": "Пошук...",
@@ -95,6 +97,61 @@ export const translations = {
     "checkout.freeDelivery": "Безплатна доставка",
     "checkout.estimatedDelivery": "Приблизна доставка",
 
+    // Delivery
+    "delivery.eyebrow": "Доставка AV.TVORKA",
+    "delivery.title": "Дбайлива доставка ваших виробів",
+    "delivery.subtitle":
+      "Ми пакуємо кожне замовлення з увагою до деталей, щоб прикраси та аксесуари приїхали безпечно, естетично та вчасно.",
+    "delivery.cards.ukraine.title": "По Україні",
+    "delivery.cards.ukraine.text":
+      "Надсилаємо замовлення по всій Україні зручними перевізниками та з можливістю відстеження.",
+    "delivery.cards.eu.title": "По Європі",
+    "delivery.cards.eu.text":
+      "Для міжнародних відправлень підбираємо оптимальний формат доставки залежно від країни отримання.",
+    "delivery.cards.free.title": "Безкоштовно від 2000 грн",
+    "delivery.cards.free.text":
+      "Для замовлень від 2000 грн доставка по Україні безкоштовна. Для інших замовлень вартість розраховується за тарифами перевізника.",
+    "delivery.process.title": "Як відбувається доставка",
+    "delivery.steps.one":
+      "Після підтвердження замовлення ми готуємо виріб до відправлення та ретельно пакуємо його.",
+    "delivery.steps.two":
+      "Ви отримуєте дані для відстеження, щойно посилка передана перевізнику.",
+    "delivery.steps.three":
+      "Доставка оплачується покупцем згідно з тарифами обраної служби, якщо не діє умова безкоштовної доставки.",
+    "delivery.note.title": "Важливо знати",
+    "delivery.note.text":
+      "Терміни доставки можуть залежати від міста, країни отримання та завантаженості служби доставки, але ми завжди намагаємося відправити замовлення якомога швидше.",
+    "delivery.note.badge": "Акуратне пакування кожного замовлення",
+
+    // Care
+    "care.eyebrow": "Догляд за виробами",
+    "care.title": "Як зберегти красу прикрас надовго",
+    "care.subtitle":
+      "Невелика турбота щодня допомагає зберегти блиск, форму та делікатність ваших улюблених виробів AV.TVORKA.",
+    "care.notice":
+      "Після отримання завжди уважно огляньте прикрасу та обережно поправте ланцюжки або інші рухомі деталі, якщо це потрібно.",
+    "care.material.title": "Догляд за нержавіючою сталлю",
+    "care.material.text":
+      "Прикраси з нержавіючої сталі вирізняються витривалістю, проте найкраще зберігають блиск за делікатного щоденного догляду та дбайливого носіння.",
+    "care.storage.title": "Зберігання",
+    "care.storage.text":
+      "Зберігайте прикраси окремо в мішечку або коробочці, щоб уникнути подряпин, тертя та контакту з іншими металевими деталями.",
+    "care.tips.title": "Практичні поради",
+    "care.tips.subtitle":
+      "Короткі звички, які допоможуть вашим прикрасам довше залишатися охайними й виразними.",
+    "care.tips.one":
+      "Знімайте прикраси перед сном, спортом, прибиранням, купанням у басейні або морі.",
+    "care.tips.two":
+      "Уникайте контакту з парфумами, кремами, лаком для волосся та мийними засобами.",
+    "care.tips.three":
+      "Одягайте прикраси після нанесення косметики, коли шкіра вже суха.",
+    "care.tips.four":
+      "Регулярно протирайте вироби м'якою серветкою або тканиною з мікрофібри.",
+    "care.tips.five":
+      "За потреби промивайте у теплій воді з краплею м'якого мила та ретельно висушуйте.",
+    "care.tips.six":
+      "Не використовуйте абразивні засоби та жорсткі щітки, особливо для виробів із покриттям або вставками.",
+
     // Order success
     "orderSuccess.title": "Дякуємо за замовлення!",
     "orderSuccess.message": "Ваше замовлення успішно оформлено",
@@ -130,6 +187,8 @@ export const translations = {
     "nav.wishlist": "Wishlist",
     "nav.language": "Language",
     "nav.currency": "Currency",
+    "nav.care": "Care",
+    "nav.delivery": "Delivery",
 
     // Header
     "header.search": "Search...",
@@ -213,6 +272,61 @@ export const translations = {
     "checkout.placeOrder": "Place Order",
     "checkout.freeDelivery": "Free Delivery",
     "checkout.estimatedDelivery": "Estimated Delivery",
+
+    // Delivery
+    "delivery.eyebrow": "AV.TVORKA Delivery",
+    "delivery.title": "Thoughtful delivery for your pieces",
+    "delivery.subtitle":
+      "Every order is packed with care so your jewellery and accessories arrive safely, beautifully, and on time.",
+    "delivery.cards.ukraine.title": "Across Ukraine",
+    "delivery.cards.ukraine.text":
+      "We ship across Ukraine with convenient carriers and tracking for every parcel.",
+    "delivery.cards.eu.title": "Across Europe",
+    "delivery.cards.eu.text":
+      "For international orders, we choose the most suitable delivery format depending on the destination country.",
+    "delivery.cards.free.title": "Free from 2000 UAH",
+    "delivery.cards.free.text":
+      "Orders from 2000 UAH receive free delivery within Ukraine. All other shipments are charged according to the carrier's rates.",
+    "delivery.process.title": "How delivery works",
+    "delivery.steps.one":
+      "Once the order is confirmed, we prepare the piece for shipment and package it carefully.",
+    "delivery.steps.two":
+      "You receive tracking details as soon as the parcel is handed over to the carrier.",
+    "delivery.steps.three":
+      "Delivery is paid by the customer according to the chosen carrier's rates unless free shipping applies.",
+    "delivery.note.title": "Good to know",
+    "delivery.note.text":
+      "Delivery timing may vary depending on your city, destination country, and carrier workload, but we always aim to dispatch as quickly as possible.",
+    "delivery.note.badge": "Carefully packed with every order",
+
+    // Care
+    "care.eyebrow": "Jewellery Care",
+    "care.title": "How to preserve the beauty of your pieces",
+    "care.subtitle":
+      "A little daily care helps preserve the shine, shape, and delicate feel of your favorite AV.TVORKA pieces.",
+    "care.notice":
+      "After receiving your piece, always inspect it carefully and gently adjust chains or other movable details if needed.",
+    "care.material.title": "Caring for stainless steel",
+    "care.material.text":
+      "Stainless steel jewellery is durable, yet it keeps its shine best with gentle everyday care and mindful wear.",
+    "care.storage.title": "Storage",
+    "care.storage.text":
+      "Store jewellery separately in a pouch or box to avoid scratches, friction, and contact with other metal details.",
+    "care.tips.title": "Practical care tips",
+    "care.tips.subtitle":
+      "Small habits that help your jewellery stay refined, clean, and expressive for longer.",
+    "care.tips.one":
+      "Remove jewellery before sleeping, sports, cleaning, swimming in the pool, or the sea.",
+    "care.tips.two":
+      "Avoid contact with perfumes, creams, hairspray, and household cleaning products.",
+    "care.tips.three":
+      "Put on your jewellery after applying cosmetics, once the skin is already dry.",
+    "care.tips.four":
+      "Wipe pieces regularly with a soft cloth or microfiber fabric.",
+    "care.tips.five":
+      "If needed, rinse in warm water with a drop of mild soap and dry thoroughly.",
+    "care.tips.six":
+      "Do not use abrasive cleaners or hard brushes, especially for pieces with plating or inserts.",
 
     // Order success
     "orderSuccess.title": "Thank you for your order!",

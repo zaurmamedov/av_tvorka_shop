@@ -1,0 +1,199 @@
+@import "../styles/variables.scss";
+
+.care-page {
+  padding: $spacing-2xl 0 $spacing-3xl;
+
+  @include media-mobile {
+    padding: $spacing-xl 0 $spacing-2xl;
+  }
+
+  &__hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+    gap: $spacing-xl;
+    align-items: stretch;
+    margin-bottom: $spacing-2xl;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  &__hero-content,
+  &__hero-image,
+  &__card,
+  &__tips {
+    border: 1px solid rgba($border, 0.95);
+    border-radius: $radius-xl;
+    box-shadow: $shadow-md;
+    background: rgba($surface, 0.97);
+  }
+
+  &__hero-content {
+    padding: $spacing-3xl;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba($background, 0.9)),
+      linear-gradient(160deg, rgba($primary-light, 0.18), transparent 62%);
+
+    @include media-mobile {
+      padding: $spacing-xl;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: $spacing-md;
+    color: $text-secondary;
+    font-size: $font-size-sm;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin-bottom: $spacing-md;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.02;
+  }
+
+  &__subtitle {
+    max-width: 38rem;
+    color: $text-secondary;
+    font-size: $font-size-lg;
+    line-height: $line-height-relaxed;
+  }
+
+  &__hero-image {
+    min-height: 22rem;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.18)),
+      url("/care.jpg") center/cover no-repeat;
+
+    @include media-mobile {
+      min-height: 16rem;
+    }
+  }
+
+  &__intro {
+    margin-bottom: $spacing-xl;
+  }
+
+  &__notice {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $spacing-md;
+    align-items: start;
+    padding: $spacing-lg $spacing-xl;
+    border: 1px solid rgba($primary, 0.22);
+    border-radius: $radius-lg;
+    background: rgba($primary-light, 0.12);
+
+    p {
+      line-height: $line-height-relaxed;
+      color: $text-primary;
+    }
+  }
+
+  &__notice-mark {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: rgba($primary, 0.2);
+    color: $primary-dark;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    padding: $spacing-xl;
+    transition:
+      transform $transition-base,
+      box-shadow $transition-base,
+      border-color $transition-base;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+      border-color: rgba($primary, 0.45);
+    }
+
+    h2 {
+      margin-bottom: $spacing-md;
+      font-size: $font-size-xl;
+    }
+
+    p {
+      color: $text-secondary;
+      line-height: $line-height-relaxed;
+    }
+  }
+
+  &__tips {
+    padding: $spacing-xl;
+  }
+
+  &__tips-header {
+    margin-bottom: $spacing-xl;
+
+    h2 {
+      margin-bottom: $spacing-sm;
+      font-size: $font-size-2xl;
+    }
+
+    p {
+      color: $text-secondary;
+      line-height: $line-height-relaxed;
+    }
+  }
+
+  &__tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $spacing-md;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__tip {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    border-radius: $radius-lg;
+    background: linear-gradient(145deg, rgba($background, 0.9), rgba(255, 255, 255, 0.96));
+    border: 1px solid rgba($border, 0.8);
+
+    p {
+      line-height: $line-height-relaxed;
+    }
+  }
+
+  &__tip-number {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($primary, 0.14);
+    color: $primary-dark;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+}

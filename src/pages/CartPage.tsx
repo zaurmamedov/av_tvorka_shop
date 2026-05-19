@@ -133,10 +133,10 @@ export const CartPage = () => {
                 <span>{currencyUtils.format(total, currency)}</span>
               </div>
 
-              <div className="summary-item">
+              {/* <div className="summary-item">
                 <span>{t("cart.shipping")}:</span>
                 <span>{t("checkout.freeDelivery")}</span>
-              </div>
+              </div> */}
 
               <div className="summary-divider"></div>
 

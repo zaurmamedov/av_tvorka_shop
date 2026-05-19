@@ -32,9 +32,11 @@ export const Header = () => {
             <nav className="header__nav">
               <Link to="/">{t("nav.home")}</Link>
               <Link to="/catalog">{t("nav.catalog")}</Link>
-              <Link to="/jewellery">{t("nav.jewellery")}</Link>
+              {/* <Link to="/jewellery">{t("nav.jewellery")}</Link>
               <Link to="/bags">{t("nav.bags")}</Link>
-              <Link to="/accessories">{t("nav.accessories")}</Link    >
+              <Link to="/accessories">{t("nav.accessories")}</Link> */}
+              <Link to="/care">{t("nav.care")}</Link>
+              <Link to="/delivery">{t("nav.delivery")}</Link>
             </nav>
 
             <div className="header__actions">
@@ -83,7 +85,7 @@ export const Header = () => {
             {
               user ? (
                 <>
-                  <span>{user.email}</span>
+                  <span>{user.user_metadata?.full_name}</span>
               
                   <button onClick={handleLogout}>
                     Logout
@@ -115,9 +117,11 @@ export const Header = () => {
           <nav className="header__mobile-nav">
             <Link to="/">{t("nav.home")}</Link>
             <Link to="/catalog">{t("nav.catalog")}</Link>
-            <Link to="/jewellery">{t("nav.jewellery")}</Link>
+            {/* <Link to="/jewellery">{t("nav.jewellery")}</Link>
             <Link to="/bags">{t("nav.bags")}</Link>
-            <Link to="/accessories">{t("nav.accessories")}</Link>
+            <Link to="/accessories">{t("nav.accessories")}</Link> */}
+            <Link to="/care">{t("nav.care")}</Link>
+            <Link to="/delivery">{t("nav.delivery")}</Link>
           </nav>
         </div>
       )}

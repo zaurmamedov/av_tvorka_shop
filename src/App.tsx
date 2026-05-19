@@ -18,6 +18,9 @@ import "./styles/global.scss";
 import "./styles/components.scss";
 import { RegisterPage } from "./pages/RegisterPage";
 import { LoginPage } from "./pages/LoginPage";
+import { AuthRequiredPage } from "./pages/AuthRequiredPage";
+import { CarePage } from "./pages/CarePage";
+import { DeliveryPage } from "./pages/DeliveryPage";
 
 function App() {
   return (
@@ -30,8 +33,11 @@ function App() {
                 <Routes>
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/auth-required" element={<AuthRequiredPage />} />
                   <Route path="/" element={<HomePage />} />
                   <Route path="/catalog" element={<CatalogPage />} />
+                  <Route path="/care" element={<CarePage />} />
+                  <Route path="/delivery" element={<DeliveryPage />} />
                   <Route path="/jewellery" element={<JewelleryPage />} />
                   <Route path="/bags" element={<BagsPage />} />
                   <Route path="/accessories" element={<AccessoriesPage />} />

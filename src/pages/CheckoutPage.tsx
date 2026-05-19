@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import { useCurrency } from "../hooks/useCurrency";
 import { useCart } from "../hooks/useCart";
@@ -9,12 +9,14 @@ import {
   PaymentMethod,
   type OrderCustomer,
 } from "../types";
-import { currencyUtils, deliveryUtils } from "../lib/utils";
+import { supabase } from "../lib/supabase";
+import { currencyUtils } from "../lib/utils";
 import { ordersService } from "../services/orders.service";
 import "./CheckoutPage.scss";
 
 export const CheckoutPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t, language } = useLanguage();
   const { currency, exchangeRates } = useCurrency();
   const { cart, cartTotal, clearCart } = useCart();
@@ -36,12 +38,51 @@ export const CheckoutPage = () => {
 
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    let isMounted = true;
+    const metadata = user.user_metadata || {};
+
+    setFormData((prev) => ({
+      name: prev.name || metadata.full_name || "",
+      phone: prev.phone || metadata.phone || "",
+      email: prev.email || user.email || "",
+    }));
+
+    const prefillCustomerData = async () => {
+      const { data: profileData } = await supabase
+        .from("profiles")
+        .select("full_name, phone")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (!isMounted) {
+        return;
+      }
+
+      setFormData((prev) => ({
+        name: prev.name || profileData?.full_name || metadata.full_name || "",
+        phone: prev.phone || profileData?.phone || metadata.phone || "",
+        email: prev.email || user.email || "",
+      }));
+    };
+
+    void prefillCustomerData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [user]);
+
   if (authLoading) {
     return <p>{t("common.loading")}</p>;
   }
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/auth-required" replace state={{ from: location }} />;
   }
 
   if (cart.items.length === 0) {
@@ -62,15 +103,7 @@ export const CheckoutPage = () => {
   }
 
   const subtotal = cartTotal(currency, exchangeRates);
-
-  const delivery = deliveryUtils.calculateDeliveryPrice(
-    deliveryMethod.toLowerCase() as "nova_poshta" | "ukrposhta" | "courier",
-    cart.totalPriceUAH,
-  );
-
-  const deliveryPriceConverted = currencyUtils.convert(delivery.price, currency);
-
-  const total = subtotal + deliveryPriceConverted;
+  const total = subtotal;
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -98,25 +131,23 @@ export const CheckoutPage = () => {
     try {
       setLoading(true);
 
-const order = await ordersService.createOrder({
-  total,
-  customerEmail: user.email,
-  customerName: formData.name,
-  customerPhone: formData.phone,
-  items: cart.items.map((item) => ({
-    product_id: item.productId,
-    quantity: item.quantity,
-    price: item.product.price,
-    name_ukr: item.product.name_ukr,
-    name_en: item.product.name_en,
-    image: item.product.img,
-  })),
-  customer: formData,
-  deliveryMethod,
-  deliveryPrice: delivery.price,
-  paymentMethod,
-  currency,
-});
+      const order = await ordersService.createOrder({
+        total,
+        customerEmail: user.email,
+        items: cart.items.map((item) => ({
+          product_id: item.productId,
+          quantity: item.quantity,
+          price: item.product.price,
+          name_ukr: item.product.name_ukr,
+          name_en: item.product.name_en,
+          image: item.product.img,
+        })),
+        customer: formData,
+        deliveryMethod,
+        deliveryPrice: 0,
+        paymentMethod,
+        currency,
+      });
 
       clearCart();
 
