@@ -136,7 +136,7 @@ export const translations = {
 
     // Home page
     "home.hero.title": "AV.TVORKA",
-    "home.hero.subtitle": "Elegant handmade jewelry and accessories",
+    "home.hero.subtitle": "Elegant handmade jewellery and accessories",
     "home.hero.cta": "Shop Now",
     "home.featured.title": "Featured Products",
     "home.featured.viewAll": "View All",

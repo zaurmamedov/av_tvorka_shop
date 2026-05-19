@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import "./Footer.scss";
 
@@ -12,11 +12,13 @@ export const Footer = () => {
       <div className="container">
         <div className="footer__content">
           <div className="footer__section">
-            <h3>{t("nav.logo")}</h3>
+            <NavLink to="/" end >
+              <h3>{t("nav.logo")}</h3>
+            </NavLink>
             <p>
               {language === "uk"
                 ? "Елегантні ручні прикраси та аксесуари від AV.TVORKA"
-                : "Elegant handmade jewelry and accessories from AV.TVORKA"}
+                : "Elegant handmade jewellery and accessories from AV.TVORKA"}
             </p>
           </div>
 
@@ -40,13 +42,25 @@ export const Footer = () => {
           <div className="footer__section">
             <h4>{language === "uk" ? "Слідкуйте за нами" : "Follow Us"}</h4>
             <div className="footer__social">
-              <a href="#" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/av.tvorka?igsh=MWJmZ2E3eTAza2ww"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer">
                 Instagram
               </a>
-              <a href="#" aria-label="Facebook">
+              <a
+                href="https://www.facebook.com/av.tvorka"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer">
                 Facebook
               </a>
-              <a href="#" aria-label="TikTok">
+              <a
+                href="https://www.tiktok.com/@av.tvorka?_r=1&_t=ZS-96Lrwm3IoZo"
+                aria-label="TikTok"
+                target="_blank"
+                rel="noopener noreferrer">
                 TikTok
               </a>
             </div>

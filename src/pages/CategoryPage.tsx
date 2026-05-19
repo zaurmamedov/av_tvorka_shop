@@ -20,7 +20,7 @@ export const CategoryPage = () => {
 
   // Map URL params to database values
   const categoryMap: Record<string, { uk: string; en: string }> = {
-    jewelry: { uk: "Прикраси", en: "Jewelry" },
+    jewellery: { uk: "Прикраси", en: "Jewellery" },
     bags: { uk: "Сумки", en: "Bags" },
     accessories: { uk: "Аксесуари", en: "Accessories" },
   };

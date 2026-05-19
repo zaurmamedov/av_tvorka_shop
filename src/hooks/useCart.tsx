@@ -6,10 +6,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Cart>(() => {
-    const saved = localStorage.getItem('cart')
-    return saved
-      ? JSON.parse(saved)
-      : { items: [], totalQuantity: 0, totalPriceUAH: 0 }
+    return getInitialCart()
   })
 
   // Persist cart to localStorage
@@ -136,4 +133,36 @@ function calculateTotal(items: CartItem[]): number {
     const discountedPrice = priceUtils.calculateDiscount(item.product.price, item.product.discount)
     return total + discountedPrice * item.quantity
   }, 0)
+}
+
+function getInitialCart(): Cart {
+  const emptyCart: Cart = { items: [], totalQuantity: 0, totalPriceUAH: 0 }
+  const saved = localStorage.getItem('cart')
+
+  if (!saved) return emptyCart
+
+  try {
+    const parsed = JSON.parse(saved)
+
+    if (!parsed || !Array.isArray(parsed.items)) {
+      return emptyCart
+    }
+
+    const items = parsed.items.filter((item: Partial<CartItem>) => {
+      return (
+        typeof item?.productId === 'string' &&
+        typeof item?.quantity === 'number' &&
+        item.quantity > 0 &&
+        !!item.product
+      )
+    }) as CartItem[]
+
+    return {
+      items,
+      totalQuantity: items.reduce((sum, item) => sum + item.quantity, 0),
+      totalPriceUAH: calculateTotal(items)
+    }
+  } catch {
+    return emptyCart
+  }
 }

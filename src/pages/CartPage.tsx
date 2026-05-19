@@ -95,12 +95,12 @@ export const CartPage = () => {
                       <input
                         type="number"
                         value={item.quantity}
-   onChange={(e) =>
-  updateQuantity(
-    item.productId,
-    Math.max(1, parseInt(e.target.value) || 1)
-  )
-}
+                        onChange={(e) =>
+                          updateQuantity(
+                            item.productId,
+                            Math.max(1, parseInt(e.target.value) || 1)
+                          )
+                        }
                         min="1"
                         className="input"
                       />

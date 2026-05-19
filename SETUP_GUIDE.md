@@ -21,7 +21,7 @@ A production-ready e-commerce website built with React, TypeScript, SCSS, and Su
 
 - Product catalog with filtering and sorting
 - Advanced product search
-- Product categories (Jewelry, Bags, Accessories)
+- Product categories (Jewellery, Bags, Accessories)
 - Wishlist system with persistence
 - Shopping cart with quantity management
 - One-click checkout
@@ -29,7 +29,7 @@ A production-ready e-commerce website built with React, TypeScript, SCSS, and Su
 
 🎨 **Premium Design**
 
-- Elegant, minimalistic jewelry store aesthetic
+- Elegant, minimalistic jewellery store aesthetic
 - Responsive mobile-first design
 - Smooth animations and transitions
 - Professional SCSS component system
@@ -153,9 +153,9 @@ CREATE INDEX idx_products_price ON products(price);
 ```sql
 INSERT INTO products (name_ukr, name_en, category_ukr, category_en, material_ukr, material_en, price, discount, img, description_ukr, description_en)
 VALUES
-  ('Ланцюжок Золотий', 'Golden Chain', 'Прикраси', 'Jewelry', 'Золото', 'Gold', 15000, 10, 'https://via.placeholder.com/300x300?text=Chain', 'Елегантний ланцюжок з перевіреного золота', 'Elegant chain made from verified gold'),
+  ('Ланцюжок Золотий', 'Golden Chain', 'Прикраси', 'Jewellery', 'Золото', 'Gold', 15000, 10, 'https://via.placeholder.com/300x300?text=Chain', 'Елегантний ланцюжок з перевіреного золота', 'Elegant chain made from verified gold'),
   ('Сумка Шкіряна', 'Leather Bag', 'Сумки', 'Bags', 'Шкіра', 'Leather', 25000, 0, 'https://via.placeholder.com/300x300?text=Bag', 'Ручна робота з натуральної шкіри', 'Handmade genuine leather bag'),
-  ('Браслет Кольчужний', 'Chainmail Bracelet', 'Прикраси', 'Jewelry', 'Мідь', 'Copper', 5000, 20, 'https://via.placeholder.com/300x300?text=Bracelet', 'Традиційна техніка кольчуги', 'Traditional chainmail technique');
+  ('Браслет Кольчужний', 'Chainmail Bracelet', 'Прикраси', 'Jewellery', 'Мідь', 'Copper', 5000, 20, 'https://via.placeholder.com/300x300?text=Bracelet', 'Традиційна техніка кольчуги', 'Traditional chainmail technique');
 ```
 
 ## Development

@@ -48,7 +48,7 @@ export const HomePage = () => {
               <p>
                 {language === "uk"
                   ? "Ми створюємо вишукані ювелірні вироби та аксесуари вручну. Кожна наша прикраса – це твір мистецтва, виконаний з любов'ю до деталей."
-                  : "We create exquisite handmade jewelry and accessories. Each piece is a work of art, crafted with attention to detail and passion."}
+                  : "We create exquisite handmade jewellery and accessories. Each piece is a work of art, crafted with attention to detail and passion."}
               </p>
               <p className="brand-about__subtitle">
                 {language === "uk"

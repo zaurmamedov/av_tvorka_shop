@@ -16,6 +16,8 @@ import { BagsPage } from "./pages/BagsPage";
 import { AccessoriesPage } from "./pages/AccessoriesPage";
 import "./styles/global.scss";
 import "./styles/components.scss";
+import { RegisterPage } from "./pages/RegisterPage";
+import { LoginPage } from "./pages/LoginPage";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Router basename="/av_tvorka_shop">
               <Layout>
                 <Routes>
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
                   <Route path="/" element={<HomePage />} />
                   <Route path="/catalog" element={<CatalogPage />} />
                   <Route path="/jewellery" element={<JewelleryPage />} />

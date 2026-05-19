@@ -73,7 +73,6 @@ export interface OrderCustomer {
   name: string;
   phone: string;
   email?: string;
-  address: string;
 }
 
 export interface Order {

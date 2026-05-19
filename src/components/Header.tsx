@@ -6,6 +6,8 @@ import { useWishlist } from "../hooks/useWishlist";
 import type { Language, Currency } from "../types";
 import "./Header.scss";
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+import { authService } from "../services/auth.service";
 
 export const Header = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -13,6 +15,10 @@ export const Header = () => {
   const { cart } = useCart();
   const { wishlist } = useWishlist();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user } = useAuth();
+  const handleLogout = async () => {
+  await authService.signOut();
+  };
 
   return (
     <header className="header">
@@ -73,6 +79,26 @@ export const Header = () => {
                 )}
               </NavLink>
             </div>
+
+            {
+              user ? (
+                <>
+                  <span>{user.email}</span>
+              
+                  <button onClick={handleLogout}>
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">Login</Link>
+
+                  <Link to="/register">
+                    Register
+                  </Link>
+                </>
+              )
+            }
 
             <button
               className="header__menu-toggle"

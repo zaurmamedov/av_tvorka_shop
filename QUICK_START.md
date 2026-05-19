@@ -45,9 +45,9 @@ CREATE TABLE products (
 ```sql
 INSERT INTO products (name_ukr, name_en, category_ukr, category_en, material_ukr, material_en, price, discount, img, description_ukr, description_en)
 VALUES
-  ('Ланцюжок Золотий', 'Golden Chain', 'Прикраси', 'Jewelry', 'Золото', 'Gold', 15000, 10, 'https://via.placeholder.com/300x300?text=Chain', 'Елегантний ланцюжок', 'Elegant chain'),
+  ('Ланцюжок Золотий', 'Golden Chain', 'Прикраси', 'Jewellery', 'Золото', 'Gold', 15000, 10, 'https://via.placeholder.com/300x300?text=Chain', 'Елегантний ланцюжок', 'Elegant chain'),
   ('Сумка Шкіряна', 'Leather Bag', 'Сумки', 'Bags', 'Шкіра', 'Leather', 25000, 0, 'https://via.placeholder.com/300x300?text=Bag', 'Ручна робота', 'Handmade'),
-  ('Браслет', 'Bracelet', 'Прикраси', 'Jewelry', 'Мідь', 'Copper', 5000, 20, 'https://via.placeholder.com/300x300?text=Bracelet', 'Кольчуга', 'Chainmail');
+  ('Браслет', 'Bracelet', 'Прикраси', 'Jewellery', 'Мідь', 'Copper', 5000, 20, 'https://via.placeholder.com/300x300?text=Bracelet', 'Кольчуга', 'Chainmail');
 ```
 
 ### 5. Start Development

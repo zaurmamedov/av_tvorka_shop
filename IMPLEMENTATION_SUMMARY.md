@@ -2,7 +2,7 @@
 
 ## ✅ Project Status: COMPLETE & PRODUCTION-READY
 
-Your complete, full-featured e-commerce platform for the jewelry and accessories brand **AV.TVORKA** has been successfully built with all requested features implemented and tested.
+Your complete, full-featured e-commerce platform for the jewellery and accessories brand **AV.TVORKA** has been successfully built with all requested features implemented and tested.
 
 ---
 
@@ -31,7 +31,7 @@ Your complete, full-featured e-commerce platform for the jewelry and accessories
 - Complete product display system
 - Advanced filtering (category, price range, material, discount)
 - Multiple sort options (newest, price, popularity)
-- Category pages (Jewelry, Bags, Accessories)
+- Category pages (Jewellery, Bags, Accessories)
 - Related products on detail pages
 - Location: `src/pages/CatalogPage.tsx` + `src/pages/CategoryPage.tsx`
 
