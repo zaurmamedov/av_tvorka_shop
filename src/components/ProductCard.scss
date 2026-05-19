@@ -8,6 +8,7 @@
   box-shadow: $shadow-sm;
   @include transition();
   height: 100%;
+  min-width: 0;
 
   &:hover {
     box-shadow: $shadow-lg;
@@ -51,6 +52,7 @@
   flex: 1;
   padding: $spacing-lg;
   gap: $spacing-md;
+  min-width: 0;
 }
 
 .product-card__name {
@@ -92,9 +94,9 @@
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
+  min-width: 0;
 
   .btn {
-    flex: 1;
     min-width: 0;
     font-size: $font-size-xs;
     padding: $spacing-sm $spacing-md;
@@ -106,26 +108,34 @@
   }
 }
 
+.product-card__details-btn {
+  flex: 1 1 100%;
+}
+
 .product-card__wishlist {
   width: 36px;
   height: 36px;
-  border: 1px solid $border;
+  border: 1px solid rgba($primary, 0.22);
   border-radius: $radius-md;
-  background-color: transparent;
+  background-color: rgba($surface, 0.96);
   cursor: pointer;
   font-size: $font-size-lg;
   @include transition();
   padding: 0;
+  color: $primary-dark;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
 
   &:hover {
     border-color: $primary;
     color: $primary;
+    background-color: rgba($primary, 0.08);
   }
 
   &.active {
-    background-color: rgba($error, 0.1);
-    border-color: $error;
-    color: $error;
+    background-color: rgba($primary, 0.16);
+    border-color: rgba($primary-dark, 0.6);
+    color: $primary-dark;
+    box-shadow: 0 8px 18px rgba($primary, 0.16);
   }
 }
 
@@ -143,6 +153,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  min-width: 36px;
 
   &:hover {
     border-color: $primary;

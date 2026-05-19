@@ -11,8 +11,13 @@
 
 .checkout-page__layout {
   display: grid;
-  grid-template-columns: 1fr minmax(280px, 350px);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 350px);
   gap: $spacing-2xl;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
 
   @include media-mobile {
     grid-template-columns: 1fr;
@@ -29,6 +34,11 @@
   padding: $spacing-xl;
   border-radius: $radius-lg;
   box-shadow: $shadow-sm;
+  min-width: 0;
+
+  @include media-tablet {
+    padding: $spacing-lg;
+  }
 
   @include media-mobile {
     padding: $spacing-lg;
@@ -93,11 +103,8 @@
 }
 
 .checkout-page__summary {
-  @include media-mobile {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-  }
+  min-width: 0;
+  align-self: start;
 }
 
 .order-summary {
@@ -108,9 +115,22 @@
   @include flex-col;
   gap: $spacing-md;
 
+  @include media-tablet {
+    padding: $spacing-lg;
+  }
+
+  @include media-mobile {
+    padding: $spacing-md;
+    gap: $spacing-sm;
+  }
+
   h3 {
     margin: 0 0 $spacing-lg 0;
     font-size: $font-size-lg;
+
+    @include media-mobile {
+      margin-bottom: $spacing-md;
+    }
   }
 }
 
@@ -119,12 +139,20 @@
   gap: $spacing-md;
   max-height: 300px;
   overflow-y: auto;
+
+  @include media-mobile {
+    gap: $spacing-sm;
+    max-height: none;
+    overflow: visible;
+  }
 }
 
 .summary-item {
   display: flex;
   justify-content: space-between;
   font-size: $font-size-sm;
+  gap: $spacing-md;
+  min-width: 0;
 
   &.total {
     font-size: $font-size-lg;
@@ -137,17 +165,35 @@
     display: flex;
     justify-content: space-between;
     gap: $spacing-md;
+    min-width: 0;
+    word-break: break-word;
+
+    @include media-tablet {
+      flex-direction: column;
+      gap: $spacing-xs;
+    }
+
+    @include media-mobile {
+      flex-direction: column;
+      gap: $spacing-xs;
+    }
   }
 
   .item-qty {
     color: $text-secondary;
     font-weight: normal;
+    flex-shrink: 0;
   }
 
   .item-price {
     font-weight: 600;
     min-width: 80px;
     text-align: right;
+    flex-shrink: 0;
+
+    @include media-mobile {
+      min-width: 0;
+    }
   }
 }
 

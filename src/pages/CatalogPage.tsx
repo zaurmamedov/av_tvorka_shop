@@ -203,7 +203,7 @@ export const CatalogPage = () => {
                 <p>{t("common.loading")}</p>
               </div>
             ) : filteredProducts.length > 0 ? (
-              <div className="grid grid--4col">
+              <div className="grid catalog-page__products-grid">
                 {filteredProducts.map((product) => (
                   <ProductCard
                     key={product.id}

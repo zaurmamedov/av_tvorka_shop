@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "../hooks/useLanguage";
 import { useCurrency } from "../hooks/useCurrency";
 import { useCart } from "../hooks/useCart";
@@ -16,8 +16,33 @@ export const Header = () => {
   const { wishlist } = useWishlist();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user } = useAuth();
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      document.body.style.removeProperty("overflow");
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+      document.body.style.removeProperty("overflow");
+    };
+  }, [mobileMenuOpen]);
+
   const handleLogout = async () => {
-  await authService.signOut();
+    await authService.signOut();
+    closeMobileMenu();
   };
 
   return (
@@ -82,31 +107,44 @@ export const Header = () => {
               </NavLink>
             </div>
 
-            {
-              user ? (
+            <div className="header__desktop-auth">
+              {user ? (
                 <>
-                  <span>{user.user_metadata?.full_name}</span>
-              
-                  <button onClick={handleLogout}>
+                  <span className="header__user-name">
+                    {user.user_metadata?.full_name}
+                  </span>
+                  <button
+                    type="button"
+                    className="header__auth-link"
+                    onClick={handleLogout}
+                  >
                     Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <Link to="/login">Login</Link>
+                  <Link to="/login" className="header__auth-link">
+                    Login
+                  </Link>
 
-                  <Link to="/register">
+                  <Link to="/register" className="header__auth-link">
                     Register
                   </Link>
                 </>
-              )
-            }
+              )}
+            </div>
 
             <button
               className="header__menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-expanded={mobileMenuOpen}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              ☰
+              <span className={`header__menu-icon ${mobileMenuOpen ? "is-open" : ""}`}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
             </button>
           </div>
         </div>
@@ -114,15 +152,42 @@ export const Header = () => {
 
       {mobileMenuOpen && (
         <div className="header__mobile-menu">
-          <nav className="header__mobile-nav">
-            <Link to="/">{t("nav.home")}</Link>
-            <Link to="/catalog">{t("nav.catalog")}</Link>
+          <button
+            type="button"
+            className="header__mobile-close"
+            onClick={closeMobileMenu}
+            aria-label="Close menu"
+          >
+            <span></span>
+            <span></span>
+          </button>
+          <div className="header__mobile-menu-inner">
+            <nav className="header__mobile-nav">
+              <Link to="/" onClick={closeMobileMenu}>{t("nav.home")}</Link>
+              <Link to="/catalog" onClick={closeMobileMenu}>{t("nav.catalog")}</Link>
             {/* <Link to="/jewellery">{t("nav.jewellery")}</Link>
             <Link to="/bags">{t("nav.bags")}</Link>
             <Link to="/accessories">{t("nav.accessories")}</Link> */}
-            <Link to="/care">{t("nav.care")}</Link>
-            <Link to="/delivery">{t("nav.delivery")}</Link>
-          </nav>
+              <Link to="/care" onClick={closeMobileMenu}>{t("nav.care")}</Link>
+              <Link to="/delivery" onClick={closeMobileMenu}>{t("nav.delivery")}</Link>
+              <Link to="/wishlist" onClick={closeMobileMenu}>{t("nav.wishlist")}</Link>
+              <Link to="/cart" onClick={closeMobileMenu}>{t("nav.cart")}</Link>
+              {user ? (
+                <button
+                  type="button"
+                  className="header__mobile-auth"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              ) : (
+                <>
+                  <Link to="/login" onClick={closeMobileMenu}>Login</Link>
+                  <Link to="/register" onClick={closeMobileMenu}>Register</Link>
+                </>
+              )}
+            </nav>
+          </div>
         </div>
       )}
     </header>

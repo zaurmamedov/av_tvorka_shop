@@ -23,9 +23,14 @@
 
 .product-detail-page__layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: $spacing-3xl;
   margin-bottom: $spacing-3xl;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
 
   @include media-mobile {
     grid-template-columns: 1fr;
@@ -63,6 +68,7 @@
 .product-detail-page__details {
   @include flex-col;
   gap: $spacing-lg;
+  min-width: 0;
 }
 
 .product-detail-page__title {
@@ -147,6 +153,7 @@
   @include flex-center;
   gap: $spacing-md;
   flex-wrap: wrap;
+  align-items: center;
 
   label {
     font-weight: 600;
@@ -160,53 +167,50 @@
     }
   }
 
-  button {
-    width: 40px;
-    height: 40px;
-    border: 1px solid $border;
-    border-radius: $radius-md;
-    background-color: $surface;
-    cursor: pointer;
-    @include transition();
-    flex-shrink: 0;
+}
 
-    &:hover:not(:disabled) {
-      border-color: $primary;
-      color: $primary;
-    }
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  background-color: $background;
+  max-width: 100%;
+  width: fit-content;
+}
 
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+.quantity-control__btn {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba($primary, 0.18);
+  border-radius: $radius-md;
+  background-color: $surface;
+  color: $text-primary;
+  cursor: pointer;
+  font-size: $font-size-lg;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @include transition();
 
-    @include media-mobile {
-      width: 36px;
-      height: 36px;
-      font-size: $font-size-sm;
-    }
+  &:hover:not(:disabled) {
+    border-color: $primary;
+    background-color: rgba($primary, 0.08);
   }
 
-  input {
-    width: 60px;
-    text-align: center;
-    border: 1px solid $border;
-    border-radius: $radius-md;
-    padding: $spacing-sm;
-    flex-shrink: 0;
-
-    &:focus {
-      outline: none;
-      border-color: $primary;
-      box-shadow: 0 0 0 2px rgba($primary, 0.1);
-    }
-
-    @include media-mobile {
-      width: 50px;
-      padding: $spacing-xs;
-      font-size: $font-size-sm;
-    }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
+}
+
+.quantity-control__value {
+  min-width: 2rem;
+  text-align: center;
+  font-weight: 600;
 }
 
 .product-detail-page__wishlist-btn {

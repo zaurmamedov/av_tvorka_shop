@@ -157,22 +157,28 @@ export const ProductDetailPage = () => {
             <div className="product-detail-page__actions">
               <div className="quantity-selector">
                 <label htmlFor="quantity">{t("productDetail.quantity")}:</label>
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  disabled={quantity === 1}
-                >
-                  −
-                </button>
-                <input
-                  id="quantity"
-                  type="number"
-                  value={quantity}
-                  onChange={(e) =>
-                    setQuantity(Math.max(1, parseInt(e.target.value) || 1))
-                  }
-                  min="1"
-                />
-                <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                <div className="quantity-control">
+                  <button
+                    type="button"
+                    className="quantity-control__btn"
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    disabled={quantity === 1}
+                    aria-label={`${t("common.remove")} 1`}
+                  >
+                    -
+                  </button>
+                  <span id="quantity" className="quantity-control__value">
+                    {quantity}
+                  </span>
+                  <button
+                    type="button"
+                    className="quantity-control__btn"
+                    onClick={() => setQuantity(quantity + 1)}
+                    aria-label={`${t("common.add")} 1`}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
 
               <button

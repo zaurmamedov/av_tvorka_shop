@@ -222,7 +222,7 @@ export const CheckoutPage = () => {
                 </div>
               </fieldset>
 
-              <fieldset>
+              {/* <fieldset>
                 <legend>{t("checkout.deliveryMethod")}</legend>
 
                 {Object.values(DeliveryMethod).map((method) => (
@@ -258,7 +258,7 @@ export const CheckoutPage = () => {
                     </span>
                   </label>
                 ))}
-              </fieldset>
+              </fieldset> */}
 
               <button
                 type="submit"

@@ -86,7 +86,7 @@ export const ProductCard = ({ product, onViewDetails }: ProductCardProps) => {
           </button>
           {onViewDetails && (
             <button
-              className="btn btn--outline btn--sm btn--flex"
+              className="btn btn--outline btn--sm product-card__details-btn"
               onClick={() => onViewDetails(product.id)}
             >
               {t("common.viewDetails")}

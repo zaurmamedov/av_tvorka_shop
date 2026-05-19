@@ -27,17 +27,19 @@ export const Footer = () => {
             <ul>
               <Link to="/">{t("nav.home")}</Link>
               <Link to="/catalog">{t("nav.catalog")}</Link>
-              <Link to="/jewellery">{t("nav.jewellery")}</Link>
+              {/* <Link to="/jewellery">{t("nav.jewellery")}</Link>
               <Link to="/bags">{t("nav.bags")}</Link>
-              <Link to="/accessories">{t("nav.accessories")}</Link    >
+              <Link to="/accessories">{t("nav.accessories")}</Link    > */}
+              <Link to="/care">{t("nav.care")}</Link>
+              <Link to="/delivery">{t("nav.delivery")}</Link>
             </ul>
           </div>
 
-          <div className="footer__section">
+          {/* <div className="footer__section">
             <h4>{language === "uk" ? "Контакти" : "Contacts"}</h4>
             <p>Email: info@avtvorka.com</p>
             <p>Phone: +380 (XX) XXX-XX-XX</p>
-          </div>
+          </div> */}
 
           <div className="footer__section">
             <h4>{language === "uk" ? "Слідкуйте за нами" : "Follow Us"}</h4>

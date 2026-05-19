@@ -99,6 +99,21 @@
 .catalog-page__content {
   @include flex-col;
   gap: $spacing-lg;
+  min-width: 0;
+}
+
+.catalog-page__products-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: $spacing-md;
+  min-width: 0;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  @include media-mobile {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
 }
 
 .catalog-page__sort {

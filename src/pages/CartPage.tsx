@@ -74,7 +74,7 @@ export const CartPage = () => {
                           }
                           className="product-info__image"
                         />
-                        <div>
+                        <div className="product-info__content">
                           <h4>
                             {language === "uk"
                               ? item.product.name_ukr
@@ -88,24 +88,33 @@ export const CartPage = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-price">
+                    <div className="col-price" data-label={t("cart.price")}>
                       {currencyUtils.format(convertedPrice, currency)}
                     </div>
-                    <div className="col-quantity">
-                      <input
-                        type="number"
-                        value={item.quantity}
-                        onChange={(e) =>
-                          updateQuantity(
-                            item.productId,
-                            Math.max(1, parseInt(e.target.value) || 1)
-                          )
-                        }
-                        min="1"
-                        className="input"
-                      />
+                    <div className="col-quantity" data-label={t("cart.quantity")}>
+                      <div className="quantity-control">
+                        <button
+                          type="button"
+                          className="quantity-control__btn"
+                          onClick={() =>
+                            updateQuantity(item.productId, Math.max(1, item.quantity - 1))
+                          }
+                          aria-label={`${t("common.remove")} 1`}
+                        >
+                          -
+                        </button>
+                        <span className="quantity-control__value">{item.quantity}</span>
+                        <button
+                          type="button"
+                          className="quantity-control__btn"
+                          onClick={() => updateQuantity(item.productId, item.quantity + 1)}
+                          aria-label={`${t("common.add")} 1`}
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
-                    <div className="col-total">
+                    <div className="col-total" data-label={t("cart.total")}>
                       {currencyUtils.format(itemTotal, currency)}
                     </div>
                     <div className="col-action">

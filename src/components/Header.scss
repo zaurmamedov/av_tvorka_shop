@@ -1,11 +1,13 @@
 @import "../styles/variables.scss";
 
+$header-collapse-breakpoint: 1100px;
+
 .header {
   background-color: $surface;
   border-bottom: 1px solid $border;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 130;
   box-shadow: $shadow-sm;
 }
 
@@ -22,6 +24,10 @@
   gap: $spacing-xl;
   flex-wrap: wrap;
   min-width: 0;
+
+  @media (max-width: $header-collapse-breakpoint) {
+    gap: $spacing-md;
+  }
 
   @include media-mobile {
     gap: $spacing-md;
@@ -51,6 +57,10 @@
   flex-wrap: wrap;
 
   @include media-mobile {
+    display: none;
+  }
+
+  @media (max-width: $header-collapse-breakpoint) {
     display: none;
   }
 
@@ -98,6 +108,10 @@
 .header__selector {
   @include flex-col;
   gap: $spacing-xs;
+
+  @media (max-width: $header-collapse-breakpoint) {
+    display: none;
+  }
 
   @include media-mobile {
     display: none;
@@ -166,42 +180,172 @@
 
 .header__menu-toggle {
   display: none;
-  background: none;
-  border: none;
-  font-size: $font-size-xl;
+  width: 44px;
+  height: 44px;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  background-color: $surface;
   cursor: pointer;
-  padding: $spacing-sm;
+  padding: 0;
   color: $text-primary;
+  align-items: center;
+  justify-content: center;
+  @include transition();
 
-  @include media-mobile {
+  @media (max-width: $header-collapse-breakpoint) {
+    display: inline-flex;
+  }
+}
+
+.header__menu-icon {
+  position: relative;
+  width: 18px;
+  height: 14px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
     display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: $radius-full;
+    background-color: $text-primary;
+    transform-origin: center;
+    @include transition();
+  }
+
+  &.is-open {
+    span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+
+.header__desktop-auth {
+  @include flex-center;
+  gap: $spacing-sm;
+  min-width: 0;
+
+  @media (max-width: $header-collapse-breakpoint) {
+    display: none;
+  }
+}
+
+.header__user-name {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  max-width: 9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header__auth-link {
+  border: none;
+  background: transparent;
+  color: $text-primary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  @include transition();
+
+  &:hover {
+    color: $primary;
   }
 }
 
 .header__mobile-menu {
   display: none;
-  padding: $spacing-lg;
-  border-top: 1px solid $border;
-  background-color: $background;
-  // height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  padding: 88px $spacing-lg $spacing-lg;
+  background: rgba(250, 250, 248, 0.96);
+  backdrop-filter: blur(18px);
+  animation: fadeIn $transition-base ease;
 
-  @include media-mobile {
+  @media (max-width: $header-collapse-breakpoint) {
     display: block;
   }
 }
 
+.header__mobile-close {
+  position: absolute;
+  top: 20px;
+  right: $spacing-lg;
+  z-index: 140;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba($primary, 0.22);
+  border-radius: $radius-lg;
+  background: rgba($surface, 0.98);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-md;
+  @include transition();
+
+  span {
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    border-radius: $radius-full;
+    background: $text-primary;
+  }
+
+  span:first-child {
+    transform: rotate(45deg);
+  }
+
+  span:last-child {
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    border-color: $primary;
+    background-color: rgba($primary, 0.08);
+  }
+}
+
+.header__mobile-menu-inner {
+  height: 100%;
+  overflow-y: auto;
+}
+
 .header__mobile-nav {
   @include flex-col;
-  gap: $spacing-md;
+  gap: $spacing-sm;
+  min-height: 100%;
 
-  a {
+  a,
+  .header__mobile-auth {
     display: block;
     color: $text-primary;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: $font-size-xl;
+    padding: $spacing-md 0;
+    border-bottom: 1px solid rgba($border, 0.75);
     @include transition();
 
     &:hover {
       color: $primary;
     }
   }
+}
+
+.header__mobile-auth {
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
 }
