@@ -28,7 +28,7 @@ function App() {
       <CurrencyProvider>
         <CartProvider>
           <WishlistProvider>
-            <Router basename="/av_tvorka_shop">
+            <Router>
               <Layout>
                 <Routes>
                   <Route path="/login" element={<LoginPage />} />
