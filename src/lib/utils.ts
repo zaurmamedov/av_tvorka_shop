@@ -1,18 +1,34 @@
-// Mock exchange rates
-// In production, these should be fetched from a real API
-const MOCK_RATES = {
+import type { Currency } from "../types";
+
+const FRANKFURTER_API_URL =
+  "https://api.frankfurter.dev/v2/rates?base=UAH&quotes=USD,EUR";
+
+const MOCK_RATES: Record<Currency, number> = {
   UAH: 1,
-  USD: 0.025, // 1 UAH = 0.025 USD
-  EUR: 0.023, // 1 UAH = 0.023 EUR
+  USD: 0.025, // 1 UAH = 0.023 USD
+  EUR: 0.023, // 1 UAH = 0.020 EUR
+};
+
+let currentRates: Record<Currency, number> = { ...MOCK_RATES };
+
+type FrankfurterResponse = {
+  base?: string;
+  date?: string;
+  quote?: Exclude<Currency, "UAH">;
+  rate?: number;
 };
 
 export const currencyUtils = {
-  convert(priceUAH: number, fromCurrency: "UAH" | "USD" | "EUR"): number {
-    if (fromCurrency === "UAH") return priceUAH;
-    return Math.round(priceUAH * MOCK_RATES[fromCurrency] * 100) / 100;
+  convert(
+    priceUAH: number,
+    currency: Currency,
+    exchangeRates: Record<Currency, number> = currentRates,
+  ): number {
+    if (currency === "UAH") return priceUAH;
+    return Math.round(priceUAH * exchangeRates[currency] * 100) / 100;
   },
 
-  format(price: number, currency: "UAH" | "USD" | "EUR"): string {
+  format(price: number, currency: Currency): string {
     const symbols = {
       UAH: "₴",
       USD: "$",
@@ -23,15 +39,42 @@ export const currencyUtils = {
   },
 
   getExchangeRates() {
-    return { ...MOCK_RATES };
+    return { ...currentRates };
   },
 
-  // In production, replace this with a real API call
   async fetchExchangeRates() {
-    // Simulate API call
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(MOCK_RATES), 500);
-    });
+    try {
+      const response = await fetch(FRANKFURTER_API_URL);
+
+      if (!response.ok) {
+        throw new Error(`Frankfurter API request failed with ${response.status}`);
+      }
+
+      const data = (await response.json()) as FrankfurterResponse[];
+
+      if (!Array.isArray(data)) {
+        throw new Error("Frankfurter API returned an unexpected response");
+      }
+
+      const usdRate = data.find((item) => item.quote === "USD");
+      const eurRate = data.find((item) => item.quote === "EUR");
+
+      currentRates = {
+        UAH: 1,
+        USD: Number(usdRate?.rate) || MOCK_RATES.USD,
+        EUR: Number(eurRate?.rate) || MOCK_RATES.EUR,
+      };
+
+      return { ...currentRates };
+    } catch {
+      if (import.meta.env.DEV) {
+        console.warn(
+          "Failed to fetch live exchange rates from Frankfurter. Falling back to mock rates.",
+        );
+      }
+      currentRates = { ...MOCK_RATES };
+      return { ...currentRates };
+    }
   },
 };
 

@@ -13,7 +13,7 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product, onViewDetails }: ProductCardProps) => {
   const { language, t } = useLanguage();
-  const { currency } = useCurrency();
+  const { currency, exchangeRates } = useCurrency();
   const { addToCart } = useCart();
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
 
@@ -23,8 +23,16 @@ export const ProductCard = ({ product, onViewDetails }: ProductCardProps) => {
     originalPrice,
     product.discount,
   );
-  const convertedPrice = currencyUtils.convert(discountedPrice, currency);
-  const convertedOriginalPrice = currencyUtils.convert(originalPrice, currency);
+  const convertedPrice = currencyUtils.convert(
+    discountedPrice,
+    currency,
+    exchangeRates,
+  );
+  const convertedOriginalPrice = currencyUtils.convert(
+    originalPrice,
+    currency,
+    exchangeRates,
+  );
 
   const inWishlist = isInWishlist(product.id);
 

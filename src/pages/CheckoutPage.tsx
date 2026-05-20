@@ -289,6 +289,7 @@ export const CheckoutPage = () => {
                   const convertedPrice = currencyUtils.convert(
                     Math.round(discountedPrice),
                     currency,
+                    exchangeRates,
                   );
 
                   return (

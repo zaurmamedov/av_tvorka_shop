@@ -104,8 +104,8 @@ export const HomePage = () => {
               <h3>{language === "uk" ? "Швидка доставка" : "Fast Delivery"}</h3>
               <p>
                 {language === "uk"
-                  ? "Доставляємо по всій Україні"
-                  : "Delivery across Ukraine"}
+                  ? "Доставляємо по всій Україні та Європі"
+                  : "Delivery across Ukraine and Europe"}
               </p>
             </div>
             <div className="benefit-card">

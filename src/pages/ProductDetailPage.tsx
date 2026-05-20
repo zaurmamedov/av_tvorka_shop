@@ -14,7 +14,7 @@ export const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { language, t } = useLanguage();
-  const { currency } = useCurrency();
+  const { currency, exchangeRates } = useCurrency();
   const { addToCart } = useCart();
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
 
@@ -80,8 +80,16 @@ export const ProductDetailPage = () => {
     originalPrice,
     product.discount,
   );
-  const convertedPrice = currencyUtils.convert(discountedPrice, currency);
-  const convertedOriginalPrice = currencyUtils.convert(originalPrice, currency);
+  const convertedPrice = currencyUtils.convert(
+    discountedPrice,
+    currency,
+    exchangeRates,
+  );
+  const convertedOriginalPrice = currencyUtils.convert(
+    originalPrice,
+    currency,
+    exchangeRates,
+  );
 
   const inWishlist = isInWishlist(product.id);
 

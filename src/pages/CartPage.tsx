@@ -55,6 +55,7 @@ export const CartPage = () => {
                 const convertedPrice = currencyUtils.convert(
                   discountedPrice,
                   currency,
+                  exchangeRates,
                 );
                 const itemTotal = convertedPrice * item.quantity;
 
