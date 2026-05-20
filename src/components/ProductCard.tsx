@@ -13,7 +13,7 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product, onViewDetails }: ProductCardProps) => {
   const { language, t } = useLanguage();
-  const { currency, exchangeRates } = useCurrency();
+  const { currency } = useCurrency();
   const { addToCart } = useCart();
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
 

@@ -28,11 +28,11 @@ export const CheckoutPage = () => {
     email: user?.email || "",
   });
 
-  const [deliveryMethod, setDeliveryMethod] = useState<DeliveryMethod>(
+  const [deliveryMethod] = useState<DeliveryMethod>(
     DeliveryMethod.NOVA_POSHTA,
   );
 
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(
+  const [paymentMethod] = useState<PaymentMethod>(
     PaymentMethod.CASH_ON_DELIVERY,
   );
 
